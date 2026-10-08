@@ -36,21 +36,49 @@
   --ilx-radius-card: 0.625rem;
   --ilx-border-default: 1px solid var(--ilx-color-border);
   --ilx-shadow-soft: 0 2px 8px rgb(44 62 80 / 8%);
-  --ilx-content-max: 75rem;
+  --ilx-content-max: 100%;
+  --ilx-page-gutter: 2rem;
   --ilx-control-min-height: 2.75rem;
 }
 
 /* The host application shell retains ownership of global navigation. */
-.detpage {
+.detpage.detpage {
   box-sizing: border-box;
-  color: var(--ilx-color-text);
-  font: 400 1rem/1.5rem var(--ilx-font-body);
+  width: 100% !important;
+  max-width: none !important;
+  margin-inline: 0 !important;
+  color: var(--ilx-color-text) !important;
+  font-family: var(--ilx-font-body) !important;
+  font-size: 1rem !important;
+  font-weight: var(--ilx-weight-regular);
+  line-height: 1.5rem !important;
 }
 
 .detpage *,
 .detpage *::before,
 .detpage *::after {
   box-sizing: border-box;
+}
+
+/* Intelex loads some compact legacy rules after overlays; keep core page text legible. */
+.detpage.detpage > * {
+  max-width: none !important;
+}
+
+.detpage.detpage .content,
+.detpage.detpage .fieldarea-field,
+.detpage.detpage .field-area {
+  font-family: var(--ilx-font-body) !important;
+  font-size: 1rem !important;
+  line-height: 1.5rem !important;
+}
+
+.detpage.detpage a,
+.detpage.detpage button,
+.detpage.detpage input,
+.detpage.detpage select,
+.detpage.detpage textarea {
+  font-family: var(--ilx-font-body) !important;
 }
 
 .detpage .required {
@@ -62,7 +90,8 @@
 .detpage > * > .header {
   display: flex;
   flex-direction: column-reverse;
-  max-width: var(--ilx-content-max) !important;
+  width: calc(100% - (var(--ilx-page-gutter) * 2)) !important;
+  max-width: none !important;
   margin: 0 auto var(--ilx-space-6) !important;
   border: var(--ilx-border-default) !important;
   border-top: 4px solid var(--ilx-color-brand) !important;
@@ -104,7 +133,10 @@
   margin: 0 !important;
   padding: var(--ilx-space-3) var(--ilx-space-6) !important;
   color: var(--ilx-color-text-strong) !important;
-  font: 700 1.5rem/2rem var(--ilx-font-heading) !important;
+  font-family: var(--ilx-font-heading) !important;
+  font-size: 1.5rem !important;
+  font-weight: var(--ilx-weight-bold) !important;
+  line-height: 2rem !important;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -119,7 +151,8 @@
 .detpage .secbase {
   display: flex;
   flex-direction: column;
-  max-width: calc(var(--ilx-content-max) - 4rem) !important;
+  width: calc(100% - (var(--ilx-page-gutter) * 2)) !important;
+  max-width: none !important;
   margin: 0 auto var(--ilx-space-6);
   padding: var(--ilx-space-6);
   border: var(--ilx-border-default);
@@ -131,6 +164,10 @@
 .detpage .secbase > .content {
   margin: 0;
   padding: 0;
+  color: var(--ilx-color-text) !important;
+  font-family: var(--ilx-font-body) !important;
+  font-size: 1rem !important;
+  line-height: 1.5rem !important;
 }
 
 .detpage .secbase > .header {
@@ -166,7 +203,10 @@
   margin: 0 !important;
   padding: 0 !important;
   color: var(--ilx-color-text-strong) !important;
-  font: 700 1.25rem/1.75rem var(--ilx-font-heading) !important;
+  font-family: var(--ilx-font-heading) !important;
+  font-size: 1.25rem !important;
+  font-weight: var(--ilx-weight-bold) !important;
+  line-height: 1.75rem !important;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -222,7 +262,10 @@
 .detpage .panel-wrapper > .header > .title {
   padding-left: 0 !important;
   color: var(--ilx-color-text-strong) !important;
-  font: 700 1rem/1.5rem var(--ilx-font-body) !important;
+  font-family: var(--ilx-font-body) !important;
+  font-size: 1rem !important;
+  font-weight: var(--ilx-weight-bold) !important;
+  line-height: 1.5rem !important;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -230,6 +273,9 @@
 
 .detpage .panel-wrapper > .content > div > .field-area {
   margin: var(--ilx-space-2) 0 !important;
+  font-family: var(--ilx-font-body) !important;
+  font-size: 1rem !important;
+  line-height: 1.5rem !important;
 }
 
 /* Forms */
@@ -268,7 +314,10 @@
   float: left !important;
   min-height: 1px !important;
   color: var(--ilx-color-text-strong);
-  font: 700 0.875rem/1.25rem var(--ilx-font-body) !important;
+  font-family: var(--ilx-font-body) !important;
+  font-size: 0.875rem !important;
+  font-weight: var(--ilx-weight-bold) !important;
+  line-height: 1.25rem !important;
 }
 
 .detpage .fieldarea-field > select,
@@ -280,7 +329,10 @@
   border-radius: var(--ilx-radius-control) !important;
   background: var(--ilx-color-surface);
   color: var(--ilx-color-text);
-  font: 400 1rem/1.5rem var(--ilx-font-body);
+  font-family: var(--ilx-font-body) !important;
+  font-size: 1rem !important;
+  font-weight: var(--ilx-weight-regular) !important;
+  line-height: 1.5rem !important;
 }
 
 .detpage .fieldarea-field > select,
@@ -344,7 +396,10 @@
   border-radius: var(--ilx-radius-control);
   background: var(--ilx-color-info-bg);
   color: var(--ilx-color-text);
-  font: 400 0.875rem/1.25rem var(--ilx-font-body);
+  font-family: var(--ilx-font-body) !important;
+  font-size: 0.875rem !important;
+  font-weight: var(--ilx-weight-regular) !important;
+  line-height: 1.25rem !important;
 }
 
 .detpage .tooltip,
@@ -401,7 +456,10 @@
   background: var(--ilx-color-surface) !important;
   color: var(--ilx-color-primary) !important;
   cursor: pointer !important;
-  font: 700 0.875rem/1.25rem var(--ilx-font-body) !important;
+  font-family: var(--ilx-font-body) !important;
+  font-size: 1rem !important;
+  font-weight: var(--ilx-weight-bold) !important;
+  line-height: 1.375rem !important;
   text-align: center !important;
   text-decoration: none !important;
   touch-action: manipulation;
@@ -464,11 +522,15 @@
 /* Notifications, status, grids, and workflow */
 .detpage .notification,
 .detpage .errorContainer {
-  max-width: calc(var(--ilx-content-max) - 4rem) !important;
+  width: calc(100% - (var(--ilx-page-gutter) * 2)) !important;
+  max-width: none !important;
   margin: 0 auto var(--ilx-space-6) !important;
   padding: var(--ilx-space-4) var(--ilx-space-6) !important;
   border-radius: var(--ilx-radius-card) !important;
   box-shadow: none;
+  font-family: var(--ilx-font-body) !important;
+  font-size: 1rem !important;
+  line-height: 1.5rem !important;
 }
 
 .detpage .notification {
@@ -525,7 +587,10 @@
 
 .detpage .grid-wrapper table {
   color: var(--ilx-color-text);
-  font: 400 0.875rem/1.25rem var(--ilx-font-body);
+  font-family: var(--ilx-font-body) !important;
+  font-size: 0.875rem !important;
+  font-weight: var(--ilx-weight-regular) !important;
+  line-height: 1.25rem !important;
 }
 
 .detpage .grid-wrapper th {
@@ -537,7 +602,8 @@
 .detpage .wfDiagram {
   display: flex;
   width: auto !important;
-  max-width: calc(var(--ilx-content-max) - 4rem) !important;
+  width: calc(100% - (var(--ilx-page-gutter) * 2)) !important;
+  max-width: none !important;
   margin: 0 auto var(--ilx-space-6);
   padding: var(--ilx-space-6);
   align-items: center;
@@ -568,7 +634,10 @@
   background-position: center !important;
   background-repeat: no-repeat !important;
   color: var(--ilx-color-text-muted) !important;
-  font: 400 0.875rem/1.25rem var(--ilx-font-body) !important;
+  font-family: var(--ilx-font-body) !important;
+  font-size: 0.875rem !important;
+  font-weight: var(--ilx-weight-regular) !important;
+  line-height: 1.25rem !important;
 }
 
 .detpage .wfDiagram > div > div::before {
